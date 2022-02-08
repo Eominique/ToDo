@@ -6,10 +6,13 @@
         <entry key="..\:/Android Project/2022/LUTY/upo/ToDo/app/src/main/res/drawable/ic_add.xml" value="0.1" />
         <entry key="..\:/Android Project/2022/LUTY/upo/ToDo/app/src/main/res/drawable/ic_check_mark.xml" value="0.1" />
         <entry key="..\:/Android Project/2022/LUTY/upo/ToDo/app/src/main/res/drawable/ic_priority.xml" value="0.1" />
+        <entry key="..\:/Android Project/2022/LUTY/upo/ToDo/app/src/main/res/drawable/ic_search.xml" value="0.1" />
+        <entry key="..\:/Android Project/2022/LUTY/upo/ToDo/app/src/main/res/drawable/ic_sort.xml" value="0.1" />
         <entry key="..\:/Android Project/2022/LUTY/upo/ToDo/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
         <entry key="..\:/Android Project/2022/LUTY/upo/ToDo/app/src/main/res/layout/fragment_add_edit.xml" value="0.1" />
         <entry key="..\:/Android Project/2022/LUTY/upo/ToDo/app/src/main/res/layout/fragment_tasks.xml" value="0.1" />
         <entry key="..\:/Android Project/2022/LUTY/upo/ToDo/app/src/main/res/layout/item_task.xml" value="0.1" />
+        <entry key="..\:/Android Project/2022/LUTY/upo/ToDo/app/src/main/res/menu/menu_fragment_task.xml" value="0.1" />
       </map>
     </option>
   </component>
