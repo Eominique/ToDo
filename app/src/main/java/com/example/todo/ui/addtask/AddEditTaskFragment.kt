@@ -20,6 +20,7 @@ class AddEditTaskFragment : Fragment(R.layout.fragment_add_edit) {
 
     private val viewModel: AddEditTaskViewModel by viewModels()
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

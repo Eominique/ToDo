@@ -11,3 +11,19 @@ d
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+u
+Eapp/src/main/java/com/example/todo/ui/addtask/AddEditTaskViewModel.kt,3\a\3a808eeb3370ef27c7007a747ebe0a4b4ea09601
+q
+Aapp/src/main/java/com/example/todo/ui/addtask/AddEditTaskEvent.kt,3\5\35eb19b19ce62e0d8b9f60bbfb48e37950b3eeed
+e
+5app/src/main/java/com/example/todo/ui/MainActivity.kt,2\0\207aeb0e3cc8a2534d18c490e20b7ccc22dae2ad
+l
+<app/src/main/java/com/example/todo/ui/task/TasksViewModel.kt,7\6\76a63af731d35d07c81e883cfd0a840c7858ae58
+‡
+Wapp/src/main/java/com/example/todo/ui/deleteallcompleted/DeleteAllCompletedViewModel.kt,3\5\35a692bc61f275c79ed3ab206e70a0e8f8b51e67
+Œ
+\app/src/main/java/com/example/todo/ui/deleteallcompleted/DeleteAllCompletedDialogFragment.kt,6\d\6d89ee2ecdfc6da4a042c527b904afd246bf4675
+g
+7app/src/main/java/com/example/todo/data/TaskDatabase.kt,4\a\4af946fe7287a3069a82af706035dd1a941f573d
+b
+2app/src/main/java/com/example/todo/data/TaskDao.kt,7\7\77bd22e544de43ff9d30e45c4cc13de68331ad9e
