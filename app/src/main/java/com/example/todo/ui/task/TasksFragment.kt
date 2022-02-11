@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -62,6 +63,15 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
                     viewModel.onTaskSwiped(task)
                 }
             }).attachToRecyclerView(recyclerViewTasks)
+
+      fabAddTask.setOnClickListener {
+          viewModel.onAddNewTaskClick()
+      }
+        }
+
+        setFragmentResultListener("add_edit_request"){_, bundle ->
+        val result = bundle.getInt("add_edit_result")
+        viewModel.onAddEditResult(result)
         }
 
         viewModel.tasks.observe(viewLifecycleOwner) {
@@ -93,7 +103,10 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
                             )
                         findNavController().navigate(action)
                     }
-                }.exhaustive
+                    is TasksViewModel.TasksEvent.ShowTaskSavedConfirmationMessage -> {
+                    Snackbar.make(requireView(), event.msg, Snackbar.LENGTH_LONG).show()
+                    }
+                }//.exhaustive
             }
         }
 
