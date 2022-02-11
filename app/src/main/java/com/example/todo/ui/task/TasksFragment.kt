@@ -64,14 +64,14 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
                 }
             }).attachToRecyclerView(recyclerViewTasks)
 
-      fabAddTask.setOnClickListener {
-          viewModel.onAddNewTaskClick()
-      }
+            fabAddTask.setOnClickListener {
+                viewModel.onAddNewTaskClick()
+            }
         }
 
-        setFragmentResultListener("add_edit_request"){_, bundle ->
-        val result = bundle.getInt("add_edit_result")
-        viewModel.onAddEditResult(result)
+        setFragmentResultListener("add_edit_request") { _, bundle ->
+            val result = bundle.getInt("add_edit_result")
+            viewModel.onAddEditResult(result)
         }
 
         viewModel.tasks.observe(viewLifecycleOwner) {
@@ -104,13 +104,16 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
                         findNavController().navigate(action)
                     }
                     is TasksViewModel.TasksEvent.ShowTaskSavedConfirmationMessage -> {
-                    Snackbar.make(requireView(), event.msg, Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(requireView(), event.msg, Snackbar.LENGTH_LONG).show()
+                    }
+                    TasksViewModel.TasksEvent.NavigateToDeleteAllCompletedScreen -> {
+                        val action =
+                            TasksFragmentDirections.actionGlobalDeleteAllCompletedDialogFragment()
+                        findNavController().navigate(action)
                     }
                 }//.exhaustive
             }
         }
-
-
         setHasOptionsMenu(true)
     }
 
@@ -156,7 +159,7 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
                 true
             }
             R.id.action_delete_all_completed_tasks -> {
-
+                viewModel.onDeleteAllCompletedClick()
                 true
             }
             else -> super.onOptionsItemSelected(item)
