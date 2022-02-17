@@ -8,8 +8,8 @@ import com.example.todo.data.TaskDao
 import com.example.todo.ui.ADD_TASK_RESULT_OK
 import com.example.todo.ui.EDIT_TASK_RESULT_OK
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -20,7 +20,7 @@ import javax.inject.Inject
 class TasksViewModel @Inject constructor(
     private val taskDao: TaskDao,
     private val preferencesManager: PreferencesManager,
-    private val state: SavedStateHandle
+    state: SavedStateHandle
 ) : ViewModel() {
 
     val searchQuery = state.getLiveData("searchQuery", "")
@@ -29,6 +29,7 @@ class TasksViewModel @Inject constructor(
     private val tasksEventChannel = Channel<TasksEvent>()
     val tasksEvent = tasksEventChannel.receiveAsFlow()
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     private val tasksFlow = combine(
         searchQuery.asFlow(),
         preferencesFlow

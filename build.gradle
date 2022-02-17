@@ -1,6 +1,6 @@
 buildscript {
     ext {
-       navVersion = "2.5.0-alpha01"
+       navVersion = "2.5.0-alpha02"
     }
 
     repositories {
