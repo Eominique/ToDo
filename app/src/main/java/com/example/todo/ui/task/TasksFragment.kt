@@ -1,5 +1,6 @@
 package com.example.todo.ui.task
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -18,6 +19,7 @@ import com.example.todo.R
 import com.example.todo.data.SortOrder
 import com.example.todo.data.Task
 import com.example.todo.databinding.FragmentTasksBinding
+import com.example.todo.ui.about.AboutFragment
 import com.example.todo.util.exhaustive
 import com.example.todo.util.onQueryTextChanged
 import com.google.android.material.snackbar.Snackbar
@@ -167,6 +169,10 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
             }
             R.id.action_delete_all_completed_tasks -> {
                 viewModel.onDeleteAllCompletedClick()
+                true
+            }
+            R.id.action_about -> {
+                findNavController().navigate(R.id.aboutFragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)

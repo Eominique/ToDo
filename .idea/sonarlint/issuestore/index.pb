@@ -15,13 +15,7 @@ Aapp/src/main/java/com/example/todo/ui/addtask/AddEditTaskEvent.kt,3\5\35eb19b1
 Wapp/src/main/java/com/example/todo/ui/deleteallcompleted/DeleteAllCompletedViewModel.kt,3\5\35a692bc61f275c79ed3ab206e70a0e8f8b51e67
 Œ
 \app/src/main/java/com/example/todo/ui/deleteallcompleted/DeleteAllCompletedDialogFragment.kt,6\d\6d89ee2ecdfc6da4a042c527b904afd246bf4675
-b
-2app/src/main/java/com/example/todo/data/TaskDao.kt,7\7\77bd22e544de43ff9d30e45c4cc13de68331ad9e
-k
-;app/src/main/java/com/example/todo/ui/task/TasksFragment.kt,2\8\28624b9c9bd5e74621571e50bd1f70f39f2afad9
 t
 Dapp/src/main/java/com/example/todo/ui/addtask/AddEditTaskFragment.kt,2\6\269186dae1140df5f15c96a2bf2acdfcc77aff9b
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
-e
-5app/src/main/java/com/example/todo/ui/MainActivity.kt,2\0\207aeb0e3cc8a2534d18c490e20b7ccc22dae2ad

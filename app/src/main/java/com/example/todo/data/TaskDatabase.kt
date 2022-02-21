@@ -33,7 +33,7 @@ abstract class TaskDatabase : RoomDatabase() {
                 dao.insert(Task("Visit grandma", completed = true))
                 dao.insert(Task("Repair my bike"))
                 dao.insert(Task("Call sister"))
-            }
+                       }
         }
     }
 }

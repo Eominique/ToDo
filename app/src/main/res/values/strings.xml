@@ -7,4 +7,8 @@
     <string name="sort_by_date_created">Sort by date created</string>
     <string name="sort_by_name">Sort by name</string>
     <string name="hide_completed">Hide completed</string>
+    <string name="open_github">https://github.com/eominique/todo</string>
+    <string name="github">github</string>
+    <string name="about">About</string>
+
 </resources>
