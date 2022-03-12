@@ -24,14 +24,20 @@ class AddEditTaskViewModel @Inject constructor(
     var taskName = state.get<String>("taskName") ?: task?.name ?: ""
         set(value) {
             field = value
-            state.set("taskName", value)
+            state["taskName"] = value
         }
 
     var taskImportance = state.get<Boolean>("taskImportance") ?: task?.important ?: false
         set(value) {
             field = value
-            state.set("taskImportance", value)
+            state["taskImportance"] = value
         }
+
+    var deadline = state.get<String>("deadline") ?: task?.deadline ?: ""
+    set(value){
+        field = value
+        state["deadline"] = value
+    }
 
     private val addEditTaskEventChannel = Channel<AddEditTaskEvent>()
     val addEditTaskEvent = addEditTaskEventChannel.receiveAsFlow()
@@ -41,12 +47,11 @@ class AddEditTaskViewModel @Inject constructor(
             showInvalidInputMessage("Name cannot be empty")
             return
         }
-
         if (task != null) {
-            val updateTask = task.copy(name = taskName, important = taskImportance)
+            val updateTask = task.copy(name = taskName, important = taskImportance, deadline =deadline)
             updateTask(updateTask)
         } else {
-            val newTask = Task(name = taskName, important = taskImportance)
+            val newTask = Task(name = taskName, important = taskImportance, deadline =deadline)
             createTask(newTask)
         }
 

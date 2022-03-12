@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp">
 
     <CheckBox
@@ -15,11 +16,12 @@
 
     <TextView
         android:id="@+id/text_view_name"
-        android:layout_width="wrap_content"
+        android:layout_width="194dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/check_box_completed"
         android:layout_alignBottom="@id/check_box_completed"
-        android:layout_toStartOf="@id/label_priority"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="0dp"
         android:layout_toEndOf="@id/check_box_completed"
         android:ellipsize="end"
         android:gravity="center_vertical"
@@ -27,13 +29,24 @@
         android:textColor="@color/black"
         tools:text="Example item" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_deadline"
+        android:layout_width="110dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toStartOf="@+id/label_priority"
+        android:layout_toEndOf="@+id/text_view_name"
+        tools:text="Sunday, 22 February, 2022" />
+
     <ImageView
         android:id="@+id/label_priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_priority"
-        android:contentDescription="@string/todo" />
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_priority" />
+
 
 </RelativeLayout>

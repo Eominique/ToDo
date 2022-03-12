@@ -1,6 +1,7 @@
 package com.example.todo.data
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
@@ -12,10 +13,7 @@ data class Task(
     val name: String,
     val important: Boolean = false,
     val completed: Boolean = false,
-    val created: Long = System.currentTimeMillis(),
+    @ColumnInfo(defaultValue = "0")
+    val deadline: String,
     @PrimaryKey(autoGenerate = true) val id: Int = 0
-) : Parcelable {
-
-    val createdDateFormatted: String
-        get() = DateFormat.getDateTimeInstance().format(created)
-}
+) : Parcelable

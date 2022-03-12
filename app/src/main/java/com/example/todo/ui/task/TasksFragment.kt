@@ -1,6 +1,5 @@
 package com.example.todo.ui.task
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -19,8 +18,6 @@ import com.example.todo.R
 import com.example.todo.data.SortOrder
 import com.example.todo.data.Task
 import com.example.todo.databinding.FragmentTasksBinding
-import com.example.todo.ui.about.AboutFragment
-import com.example.todo.util.exhaustive
 import com.example.todo.util.onQueryTextChanged
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,11 +31,12 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
 
     private val viewModel: TasksViewModel by viewModels()
     private lateinit var searchView: SearchView
+    private lateinit var binding: FragmentTasksBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentTasksBinding.bind(view)
+       binding = FragmentTasksBinding.bind(view)
 
         val taskAdapter = TaskAdapter(this)
 
@@ -118,6 +116,7 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
             }
         }
         setHasOptionsMenu(true)
+
     }
 
 
@@ -141,7 +140,6 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
             menu.findItem(R.id.action_hide_completed_tasks).isChecked =
                 viewModel.preferencesFlow.first().hideCompleted
         }
-
     }
 
     override fun onItemClick(task: Task) {
@@ -178,6 +176,7 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

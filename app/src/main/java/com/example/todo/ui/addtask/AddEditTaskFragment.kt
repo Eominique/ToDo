@@ -2,6 +2,8 @@ package com.example.todo.ui.addtask
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
@@ -12,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.todo.R
 import com.example.todo.databinding.FragmentAddEditBinding
+import com.example.todo.util.DatePickerFragment
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,19 +22,18 @@ import dagger.hilt.android.AndroidEntryPoint
 class AddEditTaskFragment : Fragment(R.layout.fragment_add_edit) {
 
     private val viewModel: AddEditTaskViewModel by viewModels()
-
+    lateinit var binding: FragmentAddEditBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentAddEditBinding.bind(view)
+        binding = FragmentAddEditBinding.bind(view)
 
         binding.apply {
             editTextTaskName.setText(viewModel.taskName)
             checkBoxImportant.isChecked = viewModel.taskImportance
             checkBoxImportant.jumpDrawablesToCurrentState()
-            textViewDateCreated.isVisible = viewModel.task != null
-            textViewDateCreated.text = "Created: ${viewModel.task?.createdDateFormatted}"
+
 
             editTextTaskName.addTextChangedListener {
                 viewModel.taskName = it.toString()
@@ -41,9 +43,19 @@ class AddEditTaskFragment : Fragment(R.layout.fragment_add_edit) {
                 viewModel.taskImportance = isChecked
             }
 
-            fabSaveTask.setOnClickListener {
-                viewModel.onSaveClick()
+            date.setOnClickListener {
+                val datePickerFragment = DatePickerFragment {
+                    deadline.text = it
+                }
+                datePickerFragment.show(childFragmentManager, "datePicker")
             }
+
+            fabSaveTask.setOnClickListener {
+                showProgressBar()
+                viewModel.onSaveClick()
+                hideProgressBar()
+            }
+
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
@@ -64,6 +76,14 @@ class AddEditTaskFragment : Fragment(R.layout.fragment_add_edit) {
                 }
             }
         }
+    }
+
+    private fun hideProgressBar() {
+        binding.progressbar.visibility = GONE
+    }
+
+    private fun showProgressBar() {
+        binding.progressbar.visibility = VISIBLE
     }
 }
 
