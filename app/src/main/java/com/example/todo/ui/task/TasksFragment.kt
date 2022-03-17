@@ -31,12 +31,15 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
 
     private val viewModel: TasksViewModel by viewModels()
     private lateinit var searchView: SearchView
-    private lateinit var binding: FragmentTasksBinding
+
+    // This property is only valid between onCreateView and onDestroyView.
+    private var _binding: FragmentTasksBinding? =null
+    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       binding = FragmentTasksBinding.bind(view)
+       _binding = FragmentTasksBinding.bind(view)
 
         val taskAdapter = TaskAdapter(this)
 
@@ -181,6 +184,7 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
     override fun onDestroyView() {
         super.onDestroyView()
         searchView.setOnQueryTextListener(null)
+        _binding = null
     }
 
 }

@@ -22,12 +22,13 @@ import dagger.hilt.android.AndroidEntryPoint
 class AddEditTaskFragment : Fragment(R.layout.fragment_add_edit) {
 
     private val viewModel: AddEditTaskViewModel by viewModels()
-    lateinit var binding: FragmentAddEditBinding
+    private var _binding: FragmentAddEditBinding? = null
+    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentAddEditBinding.bind(view)
+        _binding = FragmentAddEditBinding.bind(view)
 
         binding.apply {
             editTextTaskName.setText(viewModel.taskName)
@@ -85,6 +86,12 @@ class AddEditTaskFragment : Fragment(R.layout.fragment_add_edit) {
     private fun showProgressBar() {
         binding.progressbar.visibility = VISIBLE
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
 }
 
 
