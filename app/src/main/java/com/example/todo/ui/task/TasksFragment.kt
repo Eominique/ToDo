@@ -1,10 +1,7 @@
 package com.example.todo.ui.task
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
@@ -35,11 +32,25 @@ class TasksFragment : Fragment(R.layout.fragment_tasks),
     // This property is only valid between onCreateView and onDestroyView.
     private var _binding: FragmentTasksBinding? =null
     private val binding get() = _binding!!
+/**
+  both onCreateView() and onViewCreated() are called during the CREATED
+  state of a fragment's life cycle. However, onCreateView() is called first
+  and should only be used to inflate the fragment's view. onViewCreated() is
+  called second and all logic pertaining to operations on the inflated view
+  should be in this method.
+    **/
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentTasksBinding.inflate(inflater, container, false)
+        return binding.root
+            }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-       _binding = FragmentTasksBinding.bind(view)
 
         val taskAdapter = TaskAdapter(this)
 

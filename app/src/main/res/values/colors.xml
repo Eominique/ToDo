@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="lightYellow">#ffffb3</color>
+    <color name="space_and_border">#787878</color>
+    <color name="blue">#3080FF</color>
 </resources>

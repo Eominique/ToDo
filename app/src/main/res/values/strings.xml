@@ -10,5 +10,8 @@
     <string name="open_github">https://github.com/eominique/todo</string>
     <string name="github">github</string>
     <string name="about">About</string>
+    <string name="to_do">ToDo</string>
+    <string name="very_simple">very simple thing To-Do List help you \n to manege your daily life, without any hassle!</string>
+    <string name="welcome">Welcome</string>
 
 </resources>

@@ -1,13 +1,20 @@
 package com.example.todo.ui.task
 
+import android.app.PendingIntent.getActivity
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.data.Task
 import com.example.todo.databinding.ItemTaskBinding
+import com.example.todo.util.format
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.util.*
 
 class TaskAdapter(
     private val listener: OnItemClickListener
@@ -49,10 +56,22 @@ class TaskAdapter(
                         listener.onCheckBoxClick(task, checkBoxCompleted.isChecked)
                     }
                 }
+                tvDeadline.setOnClickListener {
+                    val datePicker = MaterialDatePicker
+                        .Builder.datePicker()
+                        .build()
+                datePicker.addOnPositiveButtonClickListener {
+                    val timeZone = TimeZone.getDefault()
+                     val offset = timeZone.getOffset(Date().time)*-1
+                    tvDeadline.text = Date(it+offset).format()
+                }
+
+                }
             }
         }
 
-        fun bind(task: Task) {
+
+             fun bind(task: Task) {
             binding.apply {
                 checkBoxCompleted.isChecked = task.completed
                 textViewName.text = task.name

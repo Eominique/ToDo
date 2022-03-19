@@ -15,15 +15,19 @@ class DatePickerFragment(
 ) : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    //val date =arguments?.getSerializable()
+
+
+
         val calendar = Calendar.getInstance()
         val year = calendar[Calendar.YEAR]
         val month = calendar[Calendar.MONTH]
         val day = calendar[Calendar.DAY_OF_MONTH]
 
         val datePickerDialog = DatePickerDialog(requireContext(), this, year, month, day)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
+//        }
         return datePickerDialog
     }
 
