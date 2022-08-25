@@ -1,11 +1,7 @@
 package com.example.todo.ui.task
 
-import android.app.PendingIntent.getActivity
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
@@ -74,7 +70,7 @@ class TaskAdapter(
              fun bind(task: Task) {
             binding.apply {
                 checkBoxCompleted.isChecked = task.completed
-                textViewName.text = task.name
+                textViewName.text = task.title
                 textViewName.paint.isStrikeThruText = task.completed
                 labelPriority.isVisible = task.important
                 tvDeadline.text = task.deadline

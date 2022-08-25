@@ -11,10 +11,15 @@ import java.time.LocalDate
 @Entity(tableName = "task_table")
 @Parcelize
 data class Task(
-    val name: String,
+    val title: String = "",
     val important: Boolean = false,
     val completed: Boolean = false,
-    @ColumnInfo(defaultValue = "0")
-    val deadline: String,
     @PrimaryKey(autoGenerate = true) val id: Int = 0
-) : Parcelable
+) : Parcelable{
+
+    val isActive
+    get() = !completed
+
+    val isEmpty
+    get() = title.isEmpty()
+}
