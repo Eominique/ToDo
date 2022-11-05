@@ -1,12 +1,12 @@
 package com.example.todo.ui.task
 
 import androidx.lifecycle.*
-import com.example.todo.data.PreferencesManager
-import com.example.todo.data.SortOrder
+import com.example.todo.util.SortOrder
 import com.example.todo.data.Task
 import com.example.todo.data.TaskDao
 import com.example.todo.ui.ADD_TASK_RESULT_OK
 import com.example.todo.ui.EDIT_TASK_RESULT_OK
+import com.example.todo.util.PreferencesManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel

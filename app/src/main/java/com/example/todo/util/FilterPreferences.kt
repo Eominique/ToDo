@@ -1,4 +1,6 @@
-package com.example.todo.data
+package com.example.todo.util
+
+import com.example.todo.util.SortOrder
 
 data class FilterPreferences(
     val sortOrder: SortOrder,

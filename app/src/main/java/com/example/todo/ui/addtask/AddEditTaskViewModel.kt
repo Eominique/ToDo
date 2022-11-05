@@ -33,10 +33,10 @@ class AddEditTaskViewModel @Inject constructor(
             state["taskImportance"] = value
         }
 
-    var deadline = state.get<String>("deadline") ?: task?.deadline ?: ""
+    var created = state.get<String>("deadline") ?: task?.created ?: ""
     set(value){
         field = value
-        state["deadline"] = value
+        state["created"] = value
     }
 
     private val addEditTaskEventChannel = Channel<AddEditTaskEvent>()
@@ -48,10 +48,10 @@ class AddEditTaskViewModel @Inject constructor(
             return
         }
         if (task != null) {
-            val updateTask = task.copy(title = taskName, important = taskImportance, deadline =deadline)
+            val updateTask = task.copy(title = taskName, important = taskImportance)
             updateTask(updateTask)
         } else {
-            val newTask = Task(title = taskName, important = taskImportance, deadline =deadline)
+            val newTask = Task(title = taskName, important = taskImportance )
             createTask(newTask)
         }
 

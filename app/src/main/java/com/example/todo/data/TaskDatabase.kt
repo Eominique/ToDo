@@ -1,9 +1,12 @@
 package com.example.todo.data
 
+import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.todo.di.ApplicationScope
 import kotlinx.coroutines.CoroutineScope
@@ -11,61 +14,30 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
 import javax.inject.Provider
+/**
+ * Main database of the app.
+ */
 
-@Database(entities = [Task::class], version = 3, exportSchema = false)
+@Database(entities = [Task::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class TaskDatabase : RoomDatabase() {
 
     abstract fun taskDao(): TaskDao
 
-    class Callback @Inject constructor(
-        private val database: Provider<TaskDatabase>,
-        @ApplicationScope private val applicationScope: CoroutineScope
-    ) : RoomDatabase.Callback() {
+    companion object {
+        @Volatile
+        private var INSTANCE: TaskDatabase? = null
 
-        @RequiresApi(Build.VERSION_CODES.O)
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
-
-            val dao = database.get().taskDao()
-
-            applicationScope.launch {
-                dao.insert(Task("Wash the dishes",
-                    important = true,
-                    completed = true,
-                    deadline = "2005:4:6"
-                ))
-                dao.insert(Task("Do the laundry",
-                    important = true,
-                    completed = true,
-                    deadline = "2045:4:6"
-                ))
-                dao.insert(Task("Buy groceries",
-                    important = true,
-                    completed = true,
-                    deadline = "2005:4:6"
-                ))
-                dao.insert(Task("Prepare food",
-                    important = true,
-                    completed = true,
-                    deadline = "2005:4:16"
-                ))
-                dao.insert(Task("Call mom",
-                    important = true,
-                    completed = true,
-                    deadline = "2005:04:6"
-                ))
-                dao.insert(Task("Visit grandma",
-                    important = true,
-                    completed = true,
-                    deadline = "2005:04:6"
-                ))
-                dao.insert(Task("Repair my bike",
-                    important = true,
-                    completed = true,
-                    deadline = "2005:4:46"
-                ))
-
-                       }
+        fun getDatabase(context: Context): TaskDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    TaskDatabase::class.java,
+                    "task_database"
+                ).build()
+                INSTANCE = instance
+                instance
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
-package com.example.todo.data
+package com.example.todo.util
 
 import android.content.Context
-import android.util.Log
 import androidx.datastore.preferences.createDataStore
 import androidx.datastore.preferences.edit
 import androidx.datastore.preferences.emptyPreferences
@@ -9,6 +8,7 @@ import androidx.datastore.preferences.preferencesKey
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
+import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -25,7 +25,7 @@ class PreferencesManager @Inject constructor(
     val preferencesFlow = dataStore.data
         .catch { exception ->
             if (exception is IOException) {
-                Log.e(TAG, "Error reading preferences", exception)
+                Timber.tag(TAG).e(exception, "Error reading preferences")
                 emit(emptyPreferences())
             } else {
                 throw exception

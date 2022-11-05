@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo.R
-import com.example.todo.data.SortOrder
+import com.example.todo.util.SortOrder
 import com.example.todo.data.Task
 import com.example.todo.databinding.FragmentTasksBinding
 import com.example.todo.util.onQueryTextChanged

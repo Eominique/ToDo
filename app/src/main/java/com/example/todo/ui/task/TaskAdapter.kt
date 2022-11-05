@@ -73,7 +73,7 @@ class TaskAdapter(
                 textViewName.text = task.title
                 textViewName.paint.isStrikeThruText = task.completed
                 labelPriority.isVisible = task.important
-                tvDeadline.text = task.deadline
+                tvDeadline.text = task.created.toString()
             }
         }
     }
