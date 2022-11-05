@@ -83,6 +83,13 @@ class TaskAdapter(
         fun onCheckBoxClick(task: Task, isChecked: Boolean)
     }
 
+    /**
+     * Callback for calculating the diff between two non-null items in a list.
+     *
+     * Used by ListAdapter to calculate the minimum number of changes between and old list and a new
+     * list that's been passed to `submitList`.
+     */
+
     class DiffCallback : DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task) =
             oldItem.id == newItem.id

@@ -1,6 +1,5 @@
 package com.example.todo.ui.addtask
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -56,9 +55,9 @@ class AddEditTaskFragment : Fragment(R.layout.fragment_add_edit) {
             }
 
             date.setOnClickListener {
-                val datePickerFragment = DatePickerFragment {
-                    deadline.text = it
-                }
+            val datePickerFragment = DatePickerFragment {
+                deadline.text = it
+            }
                 datePickerFragment.show(childFragmentManager, "datePicker")
             }
 

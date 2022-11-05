@@ -1,8 +1,6 @@
 package com.example.todo.di
 
-import android.app.Application
 import android.content.Context
-import androidx.room.Room
 import com.example.todo.data.TaskDatabase
 import dagger.Module
 import dagger.Provides
@@ -27,11 +25,14 @@ object AppModule {
     @Provides
     fun provideTaskDao(db: TaskDatabase) = db.taskDao()
 
+
     @ApplicationScope
     @Provides
     @Singleton
     fun provideApplicationScope() = CoroutineScope(SupervisorJob())
 }
+
+
 
 @Retention(AnnotationRetention.RUNTIME)
 @Qualifier
